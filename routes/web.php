@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImportExportControllor;
+use App\Http\Controllers\AdminController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('dashboard', [AdminController::class, 'index']);
+
+Route::post('viewAllData', [AdminController::class, 'view'])->name('viewAllData');
+
+Route::get('home',[ImportExportControllor::class,'view']);
+
+Route::post('viewData',[ImportExportControllor::class,'import'])->name('viewData');
+
+Route::get('export',[ImportExportControllor::class,'export']);
+
+
+
+
